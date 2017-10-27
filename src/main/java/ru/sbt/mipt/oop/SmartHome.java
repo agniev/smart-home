@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+import ru.sbt.mipt.oop.entities.Room;
 
 import java.util.ArrayList;
 import java.util.Collection;

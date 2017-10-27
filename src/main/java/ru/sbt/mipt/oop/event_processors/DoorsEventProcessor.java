@@ -1,6 +1,9 @@
 package ru.sbt.mipt.oop.event_processors;
 
 import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.entities.Door;
+import ru.sbt.mipt.oop.entities.Light;
+import ru.sbt.mipt.oop.entities.Room;
 
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
