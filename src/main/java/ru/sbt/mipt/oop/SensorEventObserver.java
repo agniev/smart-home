@@ -13,7 +13,7 @@ public class SensorEventObserver {
 	private SmartHome smartHome;
 	private EventProducer eventProducer;
 
-	public SensorEventObserver(EventProducer eventProducer, SmartHome smartHome) {
+	public SensorEventObserver(SmartHome smartHome, EventProducer eventProducer) {
 		this.smartHome = smartHome;
 		this.eventProducer = eventProducer;
 	}
@@ -31,5 +31,9 @@ public class SensorEventObserver {
 
 	public void addHandler(EventHandler eventHandler){
 		eventHandlers.add(eventHandler);
+	}
+
+	public void setEventHandlers(Collection<EventHandler> eventHandlers){
+		this.eventHandlers = eventHandlers;
 	}
 }
