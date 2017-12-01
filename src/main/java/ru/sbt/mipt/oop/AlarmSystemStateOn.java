@@ -29,6 +29,7 @@ public class AlarmSystemStateOn implements AlarmSystemState {
 
 	@Override
 	public void onEvent(SensorEvent sensorEvent) {
-		alarmSystem.setAlarmSystem
+		//todo
+//		alarmSystem.setAlarmSystem();
 	}
 }

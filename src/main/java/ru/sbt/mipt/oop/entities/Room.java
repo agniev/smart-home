@@ -1,11 +1,13 @@
 package ru.sbt.mipt.oop.entities;
 
+import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.Actionable;
 import ru.sbt.mipt.oop.entities.Door;
 import ru.sbt.mipt.oop.entities.Light;
 
 import java.util.Collection;
 
-public class Room {
+public class Room implements Actionable {
     private Collection<Light> lights;
     private Collection<Door> doors;
     private String name;
@@ -26,5 +28,16 @@ public class Room {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void executeAction(Action action) {
+        for (Door door: getDoors()){
+            door.executeAction(action);
+        }
+
+        for (Light light: getLights()){
+            light.executeAction(action);
+        }
     }
 }
