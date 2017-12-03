@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.entities.SmartHome;
 import ru.sbt.mipt.oop.entities.Door;
 import ru.sbt.mipt.oop.entities.Light;
 import ru.sbt.mipt.oop.entities.Room;

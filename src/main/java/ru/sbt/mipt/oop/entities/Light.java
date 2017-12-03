@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.entities;
 import ru.sbt.mipt.oop.Action;
 import ru.sbt.mipt.oop.Actionable;
 
-public class Light implements Actionable{
+public class Light implements Actionable {
     private boolean isOn;
     private final String id;
 

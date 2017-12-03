@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.sbt.mipt.oop.*;
 import ru.sbt.mipt.oop.entities.Light;
 import ru.sbt.mipt.oop.entities.Room;
+import ru.sbt.mipt.oop.entities.SmartHome;
 
 import java.util.Arrays;
 import java.util.Collections;

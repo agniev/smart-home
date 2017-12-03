@@ -9,9 +9,6 @@ public class Application {
     public static void main(String... args) throws IOException {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("application.xml");
         SensorEventObserver sensorEventObserver = (SensorEventObserver) ctx.getBean("sensorEventObserver");
-//        SmartHome smartHome = GetSmartHome.getSmartHome();
-//        SensorEventObserver sensorEventObserver = new SensorEventObserver(new EventProducer(), smartHome);
-//        configureHandlers(sensorEventObserver);
         sensorEventObserver.runEventCycle();
     }
 

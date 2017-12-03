@@ -1,6 +1,5 @@
-package ru.sbt.mipt.oop.event_processors;
+package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.entities.SmartHome;
 
 public interface EventHandler {

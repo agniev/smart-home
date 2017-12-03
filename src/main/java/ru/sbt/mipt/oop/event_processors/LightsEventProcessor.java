@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.event_processors;
 import ru.sbt.mipt.oop.entities.Light;
 import ru.sbt.mipt.oop.entities.Room;
 import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.entities.SmartHome;
 
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_OFF;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;

@@ -4,15 +4,14 @@
 <beans>
     <bean id="lightsEventProcessor" class="ru.sbt.mipt.oop.event_processors.LightsEventProcessor"/>
     <bean id="doorsEventProcessor" class="ru.sbt.mipt.oop.event_processors.DoorsEventProcessor"/>
+    <bean id="eventProducer" class="ru.sbt.mipt.oop.EventProducer"/>
 
-    <bean id="smartHome" class="ru.sbt.mipt.oop.GetSmartHome" factory-method="getSmartHome" />
-
-    <!--<bean id="eventProducer" class="ru.sbt.mipt.oop.EventProducer"/>-->
+    <bean id="smartHome" class="ru.sbt.mipt.oop.SmartHomeJsonFileReader" factory-method="getSmartHome" />
 
     <bean id="sensorEventObserver" class="ru.sbt.mipt.oop.SensorEventObserver">
         <constructor-arg index="0" ref="smartHome"/>
-        <!--<constructor-arg index="1" ref="eventProducer"/>-->
-        <property name="handlers">
+        <constructor-arg index="1" ref="eventProducer"/>
+        <property name="eventHandlers">
             <list>
                 <ref bean="lightsEventProcessor"/>
                 <ref bean="doorsEventProcessor"/>
