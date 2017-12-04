@@ -11,9 +11,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Created by Roman on 01.12.2017.
- */
 public class TestComposite {
     @Test
     public void testActionableComposite(){

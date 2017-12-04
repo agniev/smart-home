@@ -1,8 +1,5 @@
 package ru.sbt.mipt.oop.entities;
 
-import ru.sbt.mipt.oop.Action;
-import ru.sbt.mipt.oop.Actionable;
-
 import java.util.Collection;
 
 public class Room implements Actionable {
@@ -14,6 +11,12 @@ public class Room implements Actionable {
         this.lights = lights;
         this.doors = doors;
         this.name = name;
+        for (Door door: getDoors()){
+            door.setRoomName(getName());
+        }
+        for (Light light: getLights()){
+            light.setRoomName(getName());
+        }
     }
 
     public Collection<Light> getLights() {

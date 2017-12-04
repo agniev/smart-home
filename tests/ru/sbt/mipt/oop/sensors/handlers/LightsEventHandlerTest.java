@@ -1,7 +1,8 @@
-package ru.sbt.mipt.oop.event_processors;
+package ru.sbt.mipt.oop.sensors.handlers;
 
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.events.Event;
+import ru.sbt.mipt.oop.events.EventType;
 import ru.sbt.mipt.oop.entities.Light;
 import ru.sbt.mipt.oop.entities.Room;
 import ru.sbt.mipt.oop.entities.SmartHome;
@@ -11,22 +12,18 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by KIDCLASS on 13.10.2017.
- */
-class LightsEventProcessorTest {
+class LightsEventHandlerTest {
     @Test
     public void superTest() throws Exception {
-        LightsEventProcessor lightsEventProcessor = new LightsEventProcessor();
+        LightsEventHandler lightsEventHandler = new LightsEventHandler();
         SmartHome home = new SmartHome();
         String lightId = "1";
         Light light = new Light(lightId, false);
         home.addRoom(new Room(Arrays.asList(light),
                 Collections.emptyList(),
                 "room"));
-        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_ON, "2");
-        lightsEventProcessor.handle(home, event);
+        Event event = new Event(EventType.LIGHT_ON, "2");
+        lightsEventHandler.handle(home, event);
         assertTrue(light.isOn());
     }
-
 }

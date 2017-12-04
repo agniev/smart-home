@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class HomeBuilder {
+public class SmartHomeBuilder {
 
     public static void main(String[] args) throws IOException {
         Room kitchen = new Room(Arrays.asList(new Light("1", false), new Light("2", true)),
@@ -33,7 +33,7 @@ public class HomeBuilder {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonString = gson.toJson(smartHome);
         System.out.println(jsonString);
-        Path path = Paths.get("output.js");
+        Path path = Paths.get("src/main/resources/output.json");
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(jsonString);
         }

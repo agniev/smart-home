@@ -2,19 +2,21 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-    <bean id="lightsEventProcessor" class="ru.sbt.mipt.oop.event_processors.LightsEventProcessor"/>
-    <bean id="doorsEventProcessor" class="ru.sbt.mipt.oop.event_processors.DoorsEventProcessor"/>
-    <bean id="eventProducer" class="ru.sbt.mipt.oop.EventProducer"/>
+    <bean id="lightsEventHandler" class="ru.sbt.mipt.oop.sensors.handlers.LightsEventHandler"/>
+    <bean id="doorsEventProcessor" class="ru.sbt.mipt.oop.sensors.handlers.DoorsEventHandler"/>
+    <bean id="autoEventProcessor" class="ru.sbt.mipt.oop.sensors.handlers.AutoEventHandler"/>
+    <bean id="eventProducer" class="ru.sbt.mipt.oop.events.EventProducer"/>
 
-    <bean id="smartHome" class="ru.sbt.mipt.oop.SmartHomeJsonFileReader" factory-method="getSmartHome" />
+    <bean id="smartHome" class="ru.sbt.mipt.oop.utils.SmartHomeJsonFileReader" factory-method="getSmartHome" />
 
-    <bean id="sensorEventObserver" class="ru.sbt.mipt.oop.SensorEventObserver">
+    <bean id="eventObserver" class="ru.sbt.mipt.oop.events.EventObserver">
         <constructor-arg index="0" ref="smartHome"/>
         <constructor-arg index="1" ref="eventProducer"/>
         <property name="eventHandlers">
             <list>
-                <ref bean="lightsEventProcessor"/>
+                <ref bean="lightsEventHandler"/>
                 <ref bean="doorsEventProcessor"/>
+                <ref bean="autoEventProcessor"/>
             </list>
         </property>
     </bean>

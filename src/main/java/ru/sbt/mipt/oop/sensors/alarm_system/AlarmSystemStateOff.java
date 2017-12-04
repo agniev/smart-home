@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop.alarm_system;
+package ru.sbt.mipt.oop.sensors.alarm_system;
 
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.events.Event;
 
 public class AlarmSystemStateOff implements AlarmSystemState {
     private final AlarmSystem alarmSystem;
@@ -10,8 +10,8 @@ public class AlarmSystemStateOff implements AlarmSystemState {
     }
 
     @Override
-    public AlarmSystemStateEnum getState() {
-        return AlarmSystemStateEnum.OFF;
+    public AlarmSystemStates getState() {
+        return AlarmSystemStates.OFF;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class AlarmSystemStateOff implements AlarmSystemState {
     }
 
     @Override
-    public void onSensorEvent(SensorEvent sensorEvent) {
+    public void onEvent(Event event) {
 
     }
 

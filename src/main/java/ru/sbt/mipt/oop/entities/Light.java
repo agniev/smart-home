@@ -1,11 +1,9 @@
 package ru.sbt.mipt.oop.entities;
 
-import ru.sbt.mipt.oop.Action;
-import ru.sbt.mipt.oop.Actionable;
-
 public class Light implements Actionable {
     private boolean isOn;
     private final String id;
+    private String roomName = "not stated";
 
     public Light(String id, boolean isOn) {
         this.id = id;
@@ -27,5 +25,13 @@ public class Light implements Actionable {
     @Override
     public void executeAction(Action action) {
         action.execute(this);
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

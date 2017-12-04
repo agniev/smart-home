@@ -1,6 +1,7 @@
-package ru.sbt.mipt.oop.alarm_system;
+package ru.sbt.mipt.oop.sensors.alarm_system;
 
-import ru.sbt.mipt.oop.SensorEvent;
+
+import ru.sbt.mipt.oop.events.Event;
 
 public class AlarmSystem implements AlarmSystemState {
     private final String password;
@@ -12,7 +13,7 @@ public class AlarmSystem implements AlarmSystemState {
     }
 
     @Override
-    public AlarmSystemStateEnum getState() {
+    public AlarmSystemStates getState() {
         return alarmSystemState.getState();
     }
 
@@ -27,8 +28,8 @@ public class AlarmSystem implements AlarmSystemState {
     }
 
     @Override
-    public void onSensorEvent(SensorEvent sensorEvent) {
-        alarmSystemState.onSensorEvent(sensorEvent);
+    public void onEvent(Event event) {
+        alarmSystemState.onEvent(event);
     }
 
     @Override

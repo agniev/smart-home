@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop.alarm_system;
+package ru.sbt.mipt.oop.sensors.alarm_system;
 
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.events.Event;
 
 public class AlarmSystemStateOn implements AlarmSystemState {
 
@@ -11,8 +11,8 @@ public class AlarmSystemStateOn implements AlarmSystemState {
     }
 
     @Override
-    public AlarmSystemStateEnum getState() {
-        return AlarmSystemStateEnum.ON;
+    public AlarmSystemStates getState() {
+        return AlarmSystemStates.ON;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class AlarmSystemStateOn implements AlarmSystemState {
     }
 
     @Override
-    public void onSensorEvent(SensorEvent sensorEvent) {
+    public void onEvent(Event event) {
         alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));
     }
 
