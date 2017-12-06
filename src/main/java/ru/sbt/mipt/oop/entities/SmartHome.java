@@ -3,6 +3,8 @@ package ru.sbt.mipt.oop.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static ru.sbt.mipt.oop.entities.EntityType.*;
+
 public class SmartHome implements Actionable {
     Collection<Room> rooms;
 
@@ -23,9 +25,18 @@ public class SmartHome implements Actionable {
     }
 
     @Override
-    public void executeAction(Action action) {
-        for (Room room : getRooms()) {
-            room.executeAction(action);
+    public void executeAction(Class objectClass, Action action) {
+        switch (objectClass.getName()) {
+            case ROOM:
+            case LIGHT:
+            case DOOR:
+                for (Room room : getRooms()) {
+                    room.executeAction(objectClass, action);
+                }
+                break;
+            case SMART_HOME:
+                action.execute(this);
+                break;
         }
     }
 }

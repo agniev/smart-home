@@ -1,8 +1,10 @@
 package ru.sbt.mipt.oop.entities;
 
+import static ru.sbt.mipt.oop.entities.EntityType.LIGHT;
+
 public class Light implements Actionable {
-    private boolean isOn;
     private final String id;
+    private boolean isOn;
     private String roomName = "not stated";
 
     public Light(String id, boolean isOn) {
@@ -23,8 +25,10 @@ public class Light implements Actionable {
     }
 
     @Override
-    public void executeAction(Action action) {
-        action.execute(this);
+    public void executeAction(Class objectClass, Action action) {
+        if (objectClass.getName().equals(LIGHT)) {
+            action.execute(this);
+        }
     }
 
     public String getRoomName() {

@@ -2,6 +2,10 @@ package ru.sbt.mipt.oop.entities;
 
 import java.util.Collection;
 
+import static ru.sbt.mipt.oop.entities.EntityType.DOOR;
+import static ru.sbt.mipt.oop.entities.EntityType.LIGHT;
+import static ru.sbt.mipt.oop.entities.EntityType.ROOM;
+
 public class Room implements Actionable {
     private Collection<Light> lights;
     private Collection<Door> doors;
@@ -11,10 +15,10 @@ public class Room implements Actionable {
         this.lights = lights;
         this.doors = doors;
         this.name = name;
-        for (Door door: getDoors()){
+        for (Door door : getDoors()) {
             door.setRoomName(getName());
         }
-        for (Light light: getLights()){
+        for (Light light : getLights()) {
             light.setRoomName(getName());
         }
     }
@@ -32,13 +36,21 @@ public class Room implements Actionable {
     }
 
     @Override
-    public void executeAction(Action action) {
-        for (Door door : getDoors()) {
-            door.executeAction(action);
-        }
-
-        for (Light light : getLights()) {
-            light.executeAction(action);
+    public void executeAction(Class objectClass, Action action) {
+        switch (objectClass.getName()) {
+            case DOOR:
+                for (Door door : getDoors()) {
+                    door.executeAction(objectClass, action);
+                }
+                break;
+            case LIGHT:
+                for (Light light : getLights()) {
+                    light.executeAction(objectClass, action);
+                }
+                break;
+            case ROOM:
+                action.execute(this);
+                break;
         }
     }
 }

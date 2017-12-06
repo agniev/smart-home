@@ -1,29 +1,49 @@
 package ru.sbt.mipt.oop.sensors.handlers;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import ru.sbt.mipt.oop.events.Event;
 import ru.sbt.mipt.oop.events.EventType;
 import ru.sbt.mipt.oop.entities.Light;
-import ru.sbt.mipt.oop.entities.Room;
 import ru.sbt.mipt.oop.entities.SmartHome;
 
-import java.util.Arrays;
-import java.util.Collections;
+import static java.lang.String.valueOf;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class LightsEventHandlerTest {
+    SmartHome home;
+    LightsEventHandler lightsEventHandler;
 
-class LightsEventHandlerTest {
+    @Before
+    public void init() {
+        this.home = HomeBuilderForTests.initSmartHome();
+        lightsEventHandler = new LightsEventHandler();
+    }
+
     @Test
-    public void superTest() throws Exception {
-        LightsEventHandler lightsEventHandler = new LightsEventHandler();
-        SmartHome home = new SmartHome();
-        String lightId = "1";
-        Light light = new Light(lightId, false);
-        home.addRoom(new Room(Arrays.asList(light),
-                Collections.emptyList(),
-                "room"));
-        Event event = new Event(EventType.LIGHT_ON, "2");
-        lightsEventHandler.handle(home, event);
-        assertTrue(light.isOn());
+    public void lightOnEventsTest() throws Exception {
+        for (int i = 1; i <= 20; i++) {
+            Event event = new Event(EventType.LIGHT_ON, valueOf(i));
+            lightsEventHandler.handle(home, event);
+        }
+
+        home.executeAction(Light.class, obj -> {
+            Light light = (Light) obj;
+            assertTrue(light.isOn());
+        });
+    }
+
+    @Test
+    public void lightOffEventsTest() throws Exception {
+        for (int i = 1; i <= 20; i++) {
+            Event event = new Event(EventType.LIGHT_OFF, valueOf(i));
+            lightsEventHandler.handle(home, event);
+        }
+
+        home.executeAction(Light.class, obj -> {
+            Light light = (Light) obj;
+            assertFalse(light.isOn());
+        });
     }
 }

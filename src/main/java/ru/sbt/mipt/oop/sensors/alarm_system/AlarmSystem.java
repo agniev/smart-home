@@ -2,14 +2,17 @@ package ru.sbt.mipt.oop.sensors.alarm_system;
 
 
 import ru.sbt.mipt.oop.events.Event;
+import ru.sbt.mipt.oop.events.EventObserver;
 
 public class AlarmSystem implements AlarmSystemState {
     private final String password;
     private AlarmSystemState alarmSystemState;
+    private EventObserver eventObserver;
 
-    public AlarmSystem(String password) {
+    public AlarmSystem(String password, EventObserver eventObserver) {
         this.password = password;
         alarmSystemState = new AlarmSystemStateOff(this);
+        this.eventObserver = eventObserver;
     }
 
     @Override
@@ -43,5 +46,9 @@ public class AlarmSystem implements AlarmSystemState {
 
     public boolean isPasswordCorrect(String password) {
         return this.password.equals(password);
+    }
+
+    public EventObserver getEventObserver() {
+        return eventObserver;
     }
 }

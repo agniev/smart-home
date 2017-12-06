@@ -1,13 +1,15 @@
 package ru.sbt.mipt.oop.entities;
 
+import static ru.sbt.mipt.oop.entities.EntityType.DOOR;
+
 public class Door implements Actionable {
     private final String id;
     private boolean isOpen;
     private String roomName = "not stated";
 
-    public Door(boolean isOpen, String id) {
-        this.isOpen = isOpen;
+    public Door(String id, boolean isOpen) {
         this.id = id;
+        this.isOpen = isOpen;
     }
 
     public boolean isOpen() {
@@ -23,8 +25,10 @@ public class Door implements Actionable {
     }
 
     @Override
-    public void executeAction(Action action) {
-        action.execute(this);
+    public void executeAction(Class objectClass, Action action) {
+        if (objectClass.getName().equals(DOOR)) {
+            action.execute(this);
+        }
     }
 
     public String getRoomName() {

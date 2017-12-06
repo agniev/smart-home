@@ -8,6 +8,7 @@ public class AlarmSystemStateOn implements AlarmSystemState {
 
     public AlarmSystemStateOn(AlarmSystem alarmSystem) {
         this.alarmSystem = alarmSystem;
+        System.out.println("new Alarm system state: ON");
     }
 
     @Override
@@ -17,21 +18,23 @@ public class AlarmSystemStateOn implements AlarmSystemState {
 
     @Override
     public void turnOn() {
-
+        //do nothing
     }
 
     @Override
     public void turnOff() {
-
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));
     }
 
     @Override
     public void onEvent(Event event) {
         alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));
+        //command handlers are disabled here
+        alarmSystem.getEventObserver().handleEvent(event);
     }
 
     @Override
     public void enterPassword(String password) {
-
+        //do nothing
     }
 }
